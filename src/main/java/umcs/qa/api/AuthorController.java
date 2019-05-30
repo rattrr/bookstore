@@ -52,6 +52,12 @@ public class AuthorController {
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NO_CONTENT));
     }
 
+    @DeleteMapping()
+    public ResponseEntity deleteClient(@RequestParam long id){
+        authorService.delete(id);
+        return new ResponseEntity(HttpStatus.NO_CONTENT);
+    }
+
 
 
 }
