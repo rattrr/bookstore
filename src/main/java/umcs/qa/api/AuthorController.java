@@ -43,6 +43,15 @@ public class AuthorController {
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NO_CONTENT));
     }
 
+    @PutMapping(path="/{id}", consumes = APPLICATION_JSON_VALUE)
+    public ResponseEntity<Author> updateAuthor(@PathVariable long id, @RequestBody Author authorData){
+        authorData.setId(id);
+        Optional <Author> authorOptional=  authorService.update(authorData);
+        return authorOptional
+                .map(client -> new ResponseEntity<>(client, HttpStatus.OK))
+                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NO_CONTENT));
+    }
+
 
 
 }

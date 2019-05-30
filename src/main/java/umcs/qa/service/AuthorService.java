@@ -36,11 +36,22 @@ public class AuthorService {
         return Optional.empty();
     }
 
+    public Optional<Author> update(Author author){
+        if(existsAuthorWithId(author.getId())){
+            return Optional.of(authorRepository.save(author));
+        }
+        return Optional.empty();
+    }
+
     private boolean notExists(Author author){
         return authorRepository.getAllByFirstNameEqualsAndLastNameEqualsAndDateOfBirthEquals(
                 author.getFirstName(),
                 author.getLastName(),
                 author.getDateOfBirth())
                 .isEmpty();
+    }
+
+    private boolean existsAuthorWithId(long id){
+        return getById(id).isPresent();
     }
 }
