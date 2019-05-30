@@ -43,6 +43,12 @@ public class AuthorService {
         return Optional.empty();
     }
 
+    public void delete(long id){
+        if(existsAuthorWithId(id)) {
+            authorRepository.deleteById(id);
+        }
+    }
+
     private boolean notExists(Author author){
         return authorRepository.getAllByFirstNameEqualsAndLastNameEqualsAndDateOfBirthEquals(
                 author.getFirstName(),
