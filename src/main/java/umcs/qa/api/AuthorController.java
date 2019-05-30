@@ -28,10 +28,18 @@ public class AuthorController {
     }
 
     @PostMapping(consumes = APPLICATION_JSON_VALUE)
-    public ResponseEntity<Author> addClient(@RequestBody Author authorData){
-        Optional<Author> clientOptional = authorService.add(authorData);
-        return clientOptional
+    public ResponseEntity<Author> addAuthor(@RequestBody Author authorData){
+        Optional<Author> authorOptional = authorService.add(authorData);
+        return authorOptional
                 .map(author -> new ResponseEntity<>(author, HttpStatus.CREATED))
+                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NO_CONTENT));
+    }
+
+    @GetMapping(path="/{id}", produces = APPLICATION_JSON_VALUE)
+    public ResponseEntity<Author> getAuthorById(@PathVariable long id){
+        Optional<Author> authorOptional = authorService.getById(id);
+        return authorOptional
+                .map(author -> new ResponseEntity<>(author, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NO_CONTENT));
     }
 
