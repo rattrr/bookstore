@@ -20,9 +20,14 @@ public class AuthorService {
     }
 
     public List<Author> getAll(){
-        Iterable<Author> clientIterable = authorRepository.findAll();
-        return StreamSupport.stream(clientIterable.spliterator(), false).collect(Collectors.toList());
+        Iterable<Author> authorIterable = authorRepository.findAll();
+        return StreamSupport.stream(authorIterable.spliterator(), false).collect(Collectors.toList());
     }
+
+    public Optional<Author> getById(long id){
+        return authorRepository.findById(id);
+    }
+
 
     public Optional<Author> add(Author author){
         if(notExists(author)){
