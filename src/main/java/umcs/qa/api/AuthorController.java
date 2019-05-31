@@ -53,7 +53,7 @@ public class AuthorController {
     }
 
     @DeleteMapping()
-    public ResponseEntity deleteClient(@RequestParam long id){
+    public ResponseEntity deleteAuthor(@RequestParam long id){
         authorService.delete(id);
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
