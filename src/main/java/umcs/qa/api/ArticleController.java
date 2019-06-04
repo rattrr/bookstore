@@ -37,8 +37,8 @@ public class ArticleController {
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NO_CONTENT));
     }
 
-    @GetMapping(path = "/generate/{id}", produces = TEXT_PLAIN_VALUE)
-    public String generateArticle(@PathVariable long id){
-        return articleService.generate(id);
+    @GetMapping(path = "/generate/{words}", produces = TEXT_PLAIN_VALUE)
+    public String generateArticle(@PathVariable Long words){
+        return articleService.generateContent(words);
     }
 }
