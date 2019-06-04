@@ -42,4 +42,3 @@ public class ArticleController {
         return articleService.generateContent(words);
     }
 }
-

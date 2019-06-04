@@ -1,21 +1,14 @@
 package umcs.qa.service;
 
-import com.thedeanda.lorem.Lorem;
 import com.thedeanda.lorem.LoremIpsum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import umcs.qa.model.Article;
 import umcs.qa.repository.ArticleRepository;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.Random;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
 @Service
@@ -46,14 +39,9 @@ public class ArticleService {
     }
 
     public String generateContent(Long length) {
-        return LoremIpsum.getInstance().getWords( Math.toIntExact(length));
+        return LoremIpsum.getInstance().getWords(Math.toIntExact(length));
 
-    }
-
-    private boolean existsArticleWithId(long id) {
-        return articleRepository.findById(id).isPresent();
     }
 
 
 }
-
