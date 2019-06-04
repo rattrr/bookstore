@@ -1,0 +1,295 @@
+{
+	"info": {
+		"_postman_id": "cf087159-cd47-4b8d-9897-b93baca0b803",
+		"name": "bookstore",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "post author",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7d54dc49-8231-42ca-9c6c-09c3fa9288e0",
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([201,204]) ;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"firstName\": \"afffgdf\",\n\"lastName\": \"ddddd\",\n\t\"dateOfBirth\": \"1998-03-13\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/authors",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"authors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PostArticle",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7d54dc49-8231-42ca-9c6c-09c3fa9288e0",
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([201,204]) ;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"authorId\" : 2,\n\t\"title\" : \"new art1\",\n\t\"length\" : 10000\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/articles",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"articles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAutor",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "00fe3a71-9680-4ae6-a242-6d92bc1b47cb",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8081/authors/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"authors",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Author'sData",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0d1277a0-4eeb-4277-8be8-198d7409da23",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"ddddddaaaaddd\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"firstName\": \"modified\",\n\"lastName\": \"ddddddaaaaddd\",\n\t\"dateOfBirth\": \"1098-03-13\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/authors/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"authors",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete author",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "db76ea89-3582-45d8-8aea-400c46855e6e",
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8081/authors?id=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"authors"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllArticles",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "aca9e014-fe81-4ffe-8679-0ffd80030970",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/articles",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"articles"
+					]
+				},
+				"description": "GetAllArticles"
+			},
+			"response": []
+		},
+		{
+			"name": "GenerateContent",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "95f29771-c267-4a18-9d33-9f600468b828",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/articles/generate/99",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"articles",
+						"generate",
+						"99"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
